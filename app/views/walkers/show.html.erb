@@ -1,9 +1,23 @@
-<h1><%= @walker.walker_name %></h1>
-<p>I am your <%= @walker.walker_time %> walker</p>
-<%= image_tag @walker.walker_img %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link type="css/text" rel="stylesheet" href="/app/assets/stylesheets/application.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body class="homepage">
 
-<h2>New Dog</h2>
 
+<h1 class="header1"><%= @walker.walker_name %></h1>
+<div class="walkerimg"><%= image_tag @walker.walker_img %>
+<p class="choosewalker">Hi, I am <%= @walker.walker_name %> and I am your <%= @walker.walker_time %> walker</p>
+
+
+<h2 class="header2">Do you want me to walk your dog?</h2>
+<p> please register your dog below</p>
+<div class="walker">
 <%= form_for @dog do |d| %>
     <%= d.label :dog_name %>
     <%= d.text_field :dog_name %>
@@ -19,7 +33,9 @@
     <%= d.submit (@dog.new_record? ? "Create" : "Update") %>
 <% end %>
 
-<h4>List of dogs</h4>
+</div>
+
+<h4>Dogs I am walking today</h4>
 
 <% if @walker.dogs.any? %>
   <ul>
@@ -31,4 +47,9 @@
   <p>There are no dogs who walk with this walker.</p>
 <% end %>
 
+</div>
 <%= link_to 'Back', walkers_path %>
+
+
+</body>
+</html>
